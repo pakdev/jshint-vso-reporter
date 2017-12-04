@@ -1,3 +1,4 @@
+/* jshint node: true */
 'use strict';
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
         opts = opts || {};
 
         var type = 'warning';
-        if (opts.type && opts.type == 'error') {
+        if (opts.type && opts.type === 'error') {
             type = opts.type;
         }
 
@@ -29,4 +30,4 @@ module.exports = {
 
         console.log(out.join('\n'));
     }
-}
+};
