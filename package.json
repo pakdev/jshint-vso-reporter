@@ -1,0 +1,30 @@
+{
+  "name": "jshint-vso-reporter",
+  "version": "0.1.0",
+  "description": "A JSHint reporter for Visual Studio Team Services and Team Foundation Server",
+  "main": "index.js",
+  "dependencies": {
+    "jshint": "^2.9.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pakdev/jshint-vso-reporter.git"
+  },
+  "keywords": [
+    "jshint",
+    "reporter",
+    "vso",
+    "vsts",
+    "tfs"
+  ],
+  "author": "Peter Kurlak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pakdev/jshint-vso-reporter/issues"
+  },
+  "homepage": "https://github.com/pakdev/jshint-vso-reporter#readme"
+}
