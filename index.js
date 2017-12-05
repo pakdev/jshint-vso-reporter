@@ -23,12 +23,7 @@ module.exports = {
         var out = [];
         var files = new Map();
 
-        opts = opts || {};
-
-        var type = 'warning';
-        if (opts.type && opts.type === 'error') {
-            type = opts.type;
-        }
+        opts = Object.assign({}, { severity: 'warning' }, opts);
 
         results.forEach(result => {
             result.file = result.file.replace(/^[\.\/\\]*/, '');
@@ -42,7 +37,7 @@ module.exports = {
 
         files.forEach((errors, path) => {
             errors.forEach(error => {
-                let issue = createIssue(type, path, new Map([
+                let issue = createIssue(opts.severity, path, new Map([
                     [ 'linenumber', error.line ],
                     [ 'columnnumber', error.character ],
                     [ 'code', error.code ],

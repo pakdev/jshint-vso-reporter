@@ -30,7 +30,7 @@ describe('Tests', () => {
     it('should allow severity to be set', () => {
         const results = [{ file: 'a.txt', error: {} }];
 
-        reporter(results, null, { type: 'error' });
+        reporter(results, null, { severity: 'error' });
 
         output[0].should.contain('type=error');
         output[0].should.not.contain('type=warning');
