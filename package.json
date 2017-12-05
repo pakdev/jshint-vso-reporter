@@ -1,6 +1,6 @@
 {
   "name": "jshint-vso-reporter",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A JSHint reporter for Visual Studio Team Services and Team Foundation Server",
   "main": "index.js",
   "dependencies": {
