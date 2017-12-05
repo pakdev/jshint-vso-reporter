@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "description": "A JSHint reporter for Visual Studio Team Services and Team Foundation Server",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "test-console": "^1.1.0"
+  },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test.js"
   },
   "repository": {
     "type": "git",
