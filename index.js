@@ -1,10 +1,27 @@
 /* jshint node: true */
 'use strict';
 
+function createIssue(type, path, attributes) {
+    const attributeString = Array.from(attributes)
+        .filter(([key, val]) => val !== undefined)
+        .filter(([key, val]) => key !== 'message')
+        .map(([key, val]) => `${key}=${val}`)
+        .join(';');
+
+    let log = `###vso[task.logissue type=${type};sourcepath=${path}`;
+    if (attributeString.length > 0) {
+        log = `${log};${attributeString}`;
+    }
+
+    const message = attributes.get('message');
+
+    return `${log}]${message ? message : ''}`;
+}
+
 module.exports = {
     reporter: function(results, data, opts) {
         var out = [];
-        var files = {};
+        var files = new Map();
 
         opts = opts || {};
 
@@ -16,16 +33,24 @@ module.exports = {
         results.forEach(result => {
             result.file = result.file.replace(/^[\.\/\\]*/, '');
 
-            if (!files[result.file]) {
-                files[result.file] = [];
+            if (!files.has(result.file)) {
+                files.set(result.file, []);
             }
 
-            files[result.file].push(result.error);
+            files.get(result.file).push(result.error);
         });
 
-        Object.keys(files).forEach(path => {
-            const error = files[path];
-            out.push(`###vso[task.logissue type=${type};sourcepath=${path};linenumber=${error.line};columnnumber=${error.character};code=${error.code}]${error.reason}`);
+        files.forEach((errors, path) => {
+            errors.forEach(error => {
+                let issue = createIssue(type, path, new Map([
+                    [ 'line', error.line ],
+                    [ 'column', error.character ],
+                    [ 'code', error.code ],
+                    [ 'message', error.reason ]
+                ]));
+
+                out.push(issue);
+            });
         });
 
         console.log(out.join('\n'));
