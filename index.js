@@ -4,7 +4,7 @@
 function createIssue(type, path, attributes) {
     const attributeString = Array.from(attributes)
         .filter(([key, val]) => val !== undefined)
-        .filter(([key, val]) => key !== 'message')
+        .filter(([key, val]) => key !== 'message') // jshint ignore:line
         .map(([key, val]) => `${key}=${val}`)
         .join(';');
 

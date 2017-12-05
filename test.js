@@ -1,3 +1,6 @@
+/* jshint node: true */
+'use strict';
+
 var chai = require('chai');
 var stdout = require('test-console').stdout;
 var reporter = require('./index.js').reporter;
@@ -84,5 +87,5 @@ describe('Tests', () => {
 
         output[0].should.not.contain('undefined');
         output[0].should.match(/line=5;column=1;code=blue]\n$/);
-    })
+    });
 });
