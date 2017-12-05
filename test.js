@@ -69,7 +69,7 @@ describe('Tests', () => {
         reporter(results);
 
         output[0].should.not.contain('undefined');
-        output[0].should.contain('line=5;code=red]message');
+        output[0].should.contain('linenumber=5;code=red]message');
     });
 
     it('should not log undefined messages', () => {
@@ -86,6 +86,6 @@ describe('Tests', () => {
         reporter(results);
 
         output[0].should.not.contain('undefined');
-        output[0].should.match(/line=5;column=1;code=blue]\n$/);
+        output[0].should.match(/linenumber=5;columnnumber=1;code=blue]\n$/);
     });
 });

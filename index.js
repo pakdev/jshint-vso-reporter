@@ -43,8 +43,8 @@ module.exports = {
         files.forEach((errors, path) => {
             errors.forEach(error => {
                 let issue = createIssue(type, path, new Map([
-                    [ 'line', error.line ],
-                    [ 'column', error.character ],
+                    [ 'linenumber', error.line ],
+                    [ 'columnnumber', error.character ],
                     [ 'code', error.code ],
                     [ 'message', error.reason ]
                 ]));
